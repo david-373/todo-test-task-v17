@@ -1,0 +1,22 @@
+<div class="todo-table-wrapper">
+  <app-todo-table
+    [title]="'Today'"
+    [data]="todayTodos$ | async"
+    [showTimer]="true"
+    [isLoading]="isLoading()"
+    (toggleFavorite)="onToggleFavorite($event)"
+    (toggleDone)="onToggleDone($event)"
+    (remove)="onRemove($event)"
+  ></app-todo-table>
+</div>
+<div class="todo-table-wrapper">
+  <app-todo-table
+    [title]="'Other'"
+    [data]="otherTodos$ | async"
+    [showTimer]="false"
+    [isLoading]="isLoading()"
+    (toggleFavorite)="onToggleFavorite($event)"
+    (toggleDone)="onToggleDone($event)"
+    (remove)="onRemove($event)"
+  ></app-todo-table>
+</div>

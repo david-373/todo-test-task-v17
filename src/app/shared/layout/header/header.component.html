@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <div class="header-toolbar-wrapper">
+    <span class="header-title">My Todo List</span>
+
+    <!-- Desktop -->
+    <div class="nav-buttons desktop-only">
+      <a mat-button routerLink="/add" routerLinkActive="active-link">Add</a>
+      <a mat-button routerLink="/list" routerLinkActive="active-link">List</a>
+      <a mat-button routerLink="/favorite" routerLinkActive="active-link"
+        >Favorite</a
+      >
+    </div>
+
+    <!-- Mobile -->
+    <div class="mobile-only spacer"></div>
+    <div class="mobile-only">
+      <button mat-icon-button class="burger-menu" [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/add">Add</button>
+        <button mat-menu-item routerLink="/list">List</button>
+        <button mat-menu-item routerLink="/favorite">Favorite</button>
+      </mat-menu>
+    </div>
+
+    <span class="desktop-only spacer"></span>
+  </div>
+</mat-toolbar>

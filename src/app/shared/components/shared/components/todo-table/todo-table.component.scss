@@ -1,0 +1,38 @@
+.full-width-table {
+  width: 100%;
+}
+
+.title-cell {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mat-column-title {
+  overflow: hidden;
+}
+
+.favorite {
+  color: #ffd700;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: calc((#{$i} / 12) * 100%);
+    max-width: calc((#{$i} / 12) * 100%);
+  }
+}
+
+:host::ng-deep {
+  @media screen and (max-width: 768px) {
+    .mat-mdc-cell {
+      padding-inline: 4px;
+    }
+    .mat-mdc-header-cell{
+      padding-inline: 4px;
+
+    }
+  }
+}

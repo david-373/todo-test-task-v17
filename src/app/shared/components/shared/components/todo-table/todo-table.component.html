@@ -1,0 +1,63 @@
+@if(data()?.length){<mat-card>
+  <h3 class="table-title">{{ title() }}</h3>
+  <table
+    mat-table
+    [dataSource]="data()"
+    class="mat-elevation-z1 full-width-table"
+  >
+    <ng-container matColumnDef="isDone">
+      <th class="col-1" mat-header-cell *matHeaderCellDef>Done</th>
+      <td class="col-1" mat-cell *matCellDef="let todo">
+        <mat-checkbox
+          [checked]="todo.isDone"
+          (change)="!isLoading() && toggleDone.emit(todo.id)"
+        ></mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th class="col-5" mat-header-cell *matHeaderCellDef>Title</th>
+      <td class="col-5 mat-column-title" mat-cell *matCellDef="let todo">
+        <span class="title-cell" [title]="todo.title">{{ todo.title }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th class="col-2" mat-header-cell *matHeaderCellDef>Created At</th>
+      <td class="col-2" mat-cell *matCellDef="let todo">
+        {{ todo.createdAt | date : "MMM d, y" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expiration">
+      <th class="col-2" mat-header-cell *matHeaderCellDef>Expires</th>
+      <td class="col-2" mat-cell *matCellDef="let todo">
+        @if (showTimer()) {
+        <app-timer [endDate]="todo.expirationDate"></app-timer>
+        } @else {
+        {{ todo.expirationDate | date : "MMM d, y" }}
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th class="col-2" mat-header-cell *matHeaderCellDef></th>
+      <td class="col-2" mat-cell *matCellDef="let todo">
+        <button
+          mat-icon-button
+          (click)="!isLoading() && toggleFavorite.emit(todo.id)"
+        >
+          <mat-icon [class.favorite]="todo.isFavorite">
+            {{ todo.isFavorite ? "star" : "star_border" }}
+          </mat-icon>
+        </button>
+        <button mat-icon-button (click)="!isLoading() && remove.emit(todo.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table> </mat-card
+>}
