@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, input, output, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { Todo } from '../../../../../models/todo.model';
-import { TimerComponent } from '../../../timer/timer.component';
+import { TimerComponent } from '../timer/timer.component';
 
 @Component({
   selector: 'app-todo-table',
